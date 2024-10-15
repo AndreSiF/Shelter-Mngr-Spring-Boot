@@ -1,9 +1,9 @@
-package br.csi.dao;
+package com.br.csi.gda.dao;
 
-import br.csi.model.Permissao;
-import br.csi.model.Riscos;
-import br.csi.model.Usuario;
-import br.csi.model.Vitima;
+import com.br.csi.gda.model.Permissao;
+import com.br.csi.gda.model.Riscos;
+import com.br.csi.gda.model.Usuario;
+import com.br.csi.gda.model.Vitima;
 
 import java.sql.*;
 import java.util.ArrayList;

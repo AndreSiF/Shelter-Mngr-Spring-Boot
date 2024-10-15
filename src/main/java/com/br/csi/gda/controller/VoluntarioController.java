@@ -1,8 +1,9 @@
-package br.csi.controller;
+package com.br.csi.gda.controller;
 
-import br.csi.dao.VitimaDAO;
-import br.csi.dao.VoluntarioDAO;
-import br.csi.model.*;
+import com.br.csi.gda.dao.VoluntarioDAO;
+import com.br.csi.gda.model.Permissao;
+import com.br.csi.gda.model.Usuario;
+import com.br.csi.gda.model.Voluntario;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

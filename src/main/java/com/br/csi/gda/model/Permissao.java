@@ -1,4 +1,4 @@
-package br.csi.model;
+package com.br.csi.gda.model;
 
 public class Permissao {
     private int id_perm;

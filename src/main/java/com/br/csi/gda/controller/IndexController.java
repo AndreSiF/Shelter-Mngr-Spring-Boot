@@ -1,4 +1,4 @@
-package br.csi.controller;
+package com.br.csi.gda.controller;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;

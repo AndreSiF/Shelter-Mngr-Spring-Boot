@@ -1,7 +1,6 @@
-package br.csi.dao;
+package com.br.csi.gda.dao;
 
-import br.csi.model.Permissao;
-import br.csi.model.Usuario;
+import com.br.csi.gda.model.Usuario;
 
 import java.sql.*;
 

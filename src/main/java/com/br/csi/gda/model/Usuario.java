@@ -1,4 +1,4 @@
-package br.csi.model;
+package com.br.csi.gda.model;
 
 public class Usuario {
     private int id;

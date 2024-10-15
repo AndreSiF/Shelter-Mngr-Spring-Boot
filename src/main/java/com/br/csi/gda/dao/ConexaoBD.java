@@ -1,4 +1,4 @@
-package br.csi.dao;
+package com.br.csi.gda.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,8 +1,8 @@
-package br.csi.test;
+package com.br.csi.gda.test;
 
-import br.csi.dao.UsuarioDAO;
-import br.csi.model.Permissao;
-import br.csi.model.Usuario;
+import com.br.csi.gda.dao.UsuarioDAO;
+import com.br.csi.gda.model.Permissao;
+import com.br.csi.gda.model.Usuario;
 
 public class test {
     public static void main(String[] args) {

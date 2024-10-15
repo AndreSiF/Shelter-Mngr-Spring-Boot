@@ -1,6 +1,8 @@
-package br.csi.dao;
+package com.br.csi.gda.dao;
 
-import br.csi.model.*;
+import com.br.csi.gda.model.Permissao;
+import com.br.csi.gda.model.Usuario;
+import com.br.csi.gda.model.Voluntario;
 
 import java.sql.*;
 import java.util.ArrayList;

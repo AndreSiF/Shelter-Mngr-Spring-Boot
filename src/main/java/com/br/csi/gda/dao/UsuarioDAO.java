@@ -1,7 +1,6 @@
-package br.csi.dao;
+package com.br.csi.gda.dao;
 
-import br.csi.model.Usuario;
-import br.csi.model.Vitima;
+import com.br.csi.gda.model.Usuario;
 
 import java.sql.*;
 
