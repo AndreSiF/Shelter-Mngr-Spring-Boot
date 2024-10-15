@@ -1,23 +1,22 @@
 package com.br.csi.gda.model;
 
+import lombok.*;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Voluntario extends Usuario{
+    @NonNull
     private String endereco;
 
     public Voluntario(Usuario usuario, String endereco) {
-        super(usuario.getId(), usuario.getNome(), usuario.getCpf(), usuario.getData_cad(), usuario.getIdade(), usuario.getPermissao());
+        super(usuario.getId(), usuario.getUuid(), usuario.getNome(), usuario.getCpf(), usuario.getData_cad(), usuario.getIdade(), usuario.getPermissao());
         this.endereco = endereco;
     }
 
     public Voluntario(int id, String nome, String cpf, String data_cad, int idade, String endereco, Permissao permissao) {
-        super(id, nome, cpf, data_cad, idade, permissao);
-        this.endereco = endereco;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
+        super(nome, cpf, data_cad, idade, permissao);
         this.endereco = endereco;
     }
 }
