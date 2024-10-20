@@ -1,5 +1,7 @@
-package com.br.csi.gda.model;
+package com.br.csi.gda.model.vitima;
 
+import com.br.csi.gda.model.usuario.Permissao;
+import com.br.csi.gda.model.usuario.Usuario;
 import jakarta.persistence.Embedded;
 import lombok.*;
 
@@ -7,7 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Vitima extends Usuario{
+public class Vitima extends Usuario {
     @NonNull
     private String ultimoEnd;
 

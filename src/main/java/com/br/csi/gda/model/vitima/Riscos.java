@@ -1,4 +1,4 @@
-package com.br.csi.gda.model;
+package com.br.csi.gda.model.vitima;
 
 import jakarta.persistence.Embeddable;
 import lombok.*;

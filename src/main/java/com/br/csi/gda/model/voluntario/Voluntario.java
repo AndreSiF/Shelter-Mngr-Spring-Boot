@@ -1,12 +1,14 @@
-package com.br.csi.gda.model;
+package com.br.csi.gda.model.voluntario;
 
+import com.br.csi.gda.model.usuario.Permissao;
+import com.br.csi.gda.model.usuario.Usuario;
 import lombok.*;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Voluntario extends Usuario{
+public class Voluntario extends Usuario {
     @NonNull
     private String endereco;
 

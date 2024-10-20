@@ -1,8 +1,5 @@
 package com.br.csi.gda.test;
 
-import com.br.csi.gda.model.Permissao;
-import com.br.csi.gda.model.Usuario;
-
 public class test {
     public static void main(String[] args) {
 //        Permissao permissao = new Permissao(3, "VOLUNTARIO");

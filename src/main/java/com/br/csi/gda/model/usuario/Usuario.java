@@ -1,5 +1,6 @@
-package com.br.csi.gda.model;
+package com.br.csi.gda.model.usuario;
 
+import com.br.csi.gda.model.usuario.Permissao;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
