@@ -1,6 +1,8 @@
 package com.br.csi.gda.model.vitima;
 
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.*;
 
 @Embeddable

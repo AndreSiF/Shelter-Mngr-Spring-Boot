@@ -10,12 +10,12 @@ import java.util.List;
 @RequestMapping("/vitima")
 public class VitimaController {
 
-    private VitimaService service;
+    private final VitimaService service;
     public VitimaController(VitimaService service){
         this.service = service;
     }
 
-    @GetMapping("/listarVitimas")
+    @GetMapping("/listar")
     public List<Vitima> listar(){
         return this.service.listar();
     }

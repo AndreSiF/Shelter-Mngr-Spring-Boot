@@ -14,11 +14,14 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @RequiredArgsConstructor
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_usuario")
     private int id;
 
     @UuidGenerator
+    @Column(name = "uuid_usuario")
     private UUID uuid;
 
     @NonNull

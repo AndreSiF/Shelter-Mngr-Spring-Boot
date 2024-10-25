@@ -6,5 +6,5 @@ import java.util.UUID;
 
 public interface VitimaRepository extends JpaRepository<Vitima, Integer> {
     public Vitima findVitimaByUuid(UUID uuid);
-    public Vitima deleteVitimaByUuid(UUID uuid);
+    public void deleteVitimaByUuid(UUID uuid);
 }

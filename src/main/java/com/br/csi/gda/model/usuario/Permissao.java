@@ -1,6 +1,8 @@
 package com.br.csi.gda.model.usuario;
 
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.*;
 
 @Embeddable
@@ -13,5 +15,5 @@ public class Permissao {
     private int id_perm;
 
     @NonNull
-    private String nome;
+    private String nomePerm;
 }
