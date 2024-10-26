@@ -19,9 +19,8 @@ public class Vitima extends Usuario {
     @Column(name = "id_vitima")
     private int id;
 
-    @UuidGenerator
-    @Column(name = "uuid_vitima")
-    private UUID uuid;
+    @Column(name = "uuid_vitima", nullable = false, updatable = false)
+    private UUID uuid_vitima;
 
     @NonNull
     @Column(name = "ultimo_end")

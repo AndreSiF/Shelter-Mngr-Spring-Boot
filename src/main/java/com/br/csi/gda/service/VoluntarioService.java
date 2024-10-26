@@ -1,6 +1,5 @@
 package com.br.csi.gda.service;
 
-import com.br.csi.gda.model.vitima.Vitima;
 import com.br.csi.gda.model.voluntario.Voluntario;
 import com.br.csi.gda.model.voluntario.VoluntarioRepository;
 import org.springframework.stereotype.Service;

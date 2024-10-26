@@ -21,7 +21,7 @@ public class Voluntario extends Usuario {
 
     @UuidGenerator
     @Column(name = "uuid_volunt")
-    private UUID uuid;
+    private UUID uuid_volunt;
 
     @NonNull
     private String endereco;
