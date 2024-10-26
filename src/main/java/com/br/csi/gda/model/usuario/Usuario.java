@@ -1,6 +1,5 @@
 package com.br.csi.gda.model.usuario;
 
-import com.br.csi.gda.model.usuario.Permissao;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
@@ -36,14 +35,6 @@ public class Usuario {
     @NonNull
     private int idade;
 
-    @Embedded
     @NonNull
-    private Permissao permissao;
-
-//    public Usuario(String nome, String cpf, int idade, Permissao permissao) {
-//        this.nome = nome;
-//        this.cpf = cpf;
-//        this.idade = idade;
-//        this.permissao = permissao;
-//    }
+    private int perm;
 }

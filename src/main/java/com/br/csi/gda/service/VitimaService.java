@@ -34,11 +34,11 @@ public class VitimaService {
         Vitima v = this.repository.findVitimaByUuid(vitima.getUuid());
         v.setNome(vitima.getNome());
         v.setCpf(vitima.getCpf());
-        v.setRiscos(vitima.getRiscos());
+        v.setDescricao(vitima.getDescricao());
         v.setPresente(vitima.isPresente());
         v.setUltimoEnd(vitima.getUltimoEnd());
         v.setIdade(vitima.getIdade());
-        v.setPermissao(vitima.getPermissao());
+        v.setPerm(vitima.getPerm());
         this.repository.save(v);
     }
 
