@@ -1,6 +1,8 @@
 package com.br.csi.gda.model.usuario;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
@@ -24,17 +26,23 @@ public class Usuario {
     private UUID uuid;
 
     @NonNull
+    @NotBlank
     private String nome;
 
     @NonNull
+    @NotBlank
+    @Size(min = 14, max = 14, message = "CPF inválido.")
     private String cpf;
 
     @NonNull
+    @NotBlank
     private String data_cad;
 
     @NonNull
+    @NotBlank
     private int idade;
 
     @NonNull
+    @NotBlank
     private int perm;
 }

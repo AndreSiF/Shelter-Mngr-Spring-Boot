@@ -1,6 +1,5 @@
-package com.br.csi.gda.model.voluntario;
+package com.br.csi.gda.model.abrigo;
 
-import com.br.csi.gda.model.usuario.Usuario;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -9,22 +8,36 @@ import org.hibernate.annotations.UuidGenerator;
 import java.util.UUID;
 
 @Entity
-@Table(name = "voluntario")
+@Table(name = "abrigo")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Voluntario extends Usuario {
+@RequiredArgsConstructor
+public class Abrigo {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_volunt")
+    @Column(name = "id_abrigo")
     private int id;
 
     @UuidGenerator
-    @Column(name = "uuid_volunt")
-    private UUID uuid_volunt;
+    @Column(name = "uuid_abrigo")
+    private UUID uuid_abrigo;
+
+    @NonNull
+    @NotBlank
+    private String nome;
 
     @NonNull
     @NotBlank
     private String endereco;
+
+    @NonNull
+    @NotBlank
+    private int vagas;
+
+    @NonNull
+    @NotBlank
+    private int cadastros;
 }
