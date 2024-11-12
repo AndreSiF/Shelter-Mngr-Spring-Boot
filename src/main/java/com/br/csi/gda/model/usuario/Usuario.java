@@ -1,5 +1,6 @@
 package com.br.csi.gda.model.usuario;
 
+import com.br.csi.gda.model.abrigo.Abrigo;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -39,10 +40,12 @@ public class Usuario {
     private String data_cad;
 
     @NonNull
-    @NotBlank
     private int idade;
 
     @NonNull
-    @NotBlank
     private int perm;
+
+    @ManyToOne
+    @JoinColumn(name = "id_abrigo")
+    private Abrigo abrigo;
 }

@@ -44,7 +44,7 @@ public class VoluntarioService {
         return this.repository.findVoluntarioByUuid(UUID.fromString(uuid));
     }
 
-    public void deletar(String uuid){
+    public void deletarUUID(String uuid){
         this.repository.deleteVoluntarioByUuid(UUID.fromString(uuid));
     }
 }

@@ -5,6 +5,7 @@ import com.br.csi.gda.model.vitima.Vitima;
 import com.br.csi.gda.service.VitimaService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -35,12 +36,8 @@ public class VitimaController {
         return this.service.getVitima(uuid);
     }
 
-    @PostMapping("/get-json")
-    public void printJSon(@RequestBody String json){
-        System.out.println(json);
-    }
-
     @PostMapping()
+    @Transactional
     public ResponseEntity salvar(@RequestBody @Valid Vitima vitima, UriComponentsBuilder uriBuilder){
         this.service.salvar(vitima);
         URI uri = uriBuilder.path("/voluntario/{uuid}").buildAndExpand(vitima.getUuid()).toUri();
@@ -53,9 +50,10 @@ public class VitimaController {
         return ResponseEntity.ok(vitima);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity deletar(@PathVariable Integer id){
-        this.service.excluir(id);
+    @DeleteMapping("/{uuid}")
+    @Transactional
+    public ResponseEntity deletarUUID(@PathVariable String uuid){
+        this.service.deletarUUID(uuid);
         return ResponseEntity.noContent().build();
     }
 }

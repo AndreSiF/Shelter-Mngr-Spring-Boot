@@ -29,10 +29,8 @@ public class Vitima extends Usuario {
     private String ultimoEnd;
 
     @NonNull
-    @NotBlank
     private boolean presente;
 
     @NonNull
-    @NotBlank
     private String descricao;
 }

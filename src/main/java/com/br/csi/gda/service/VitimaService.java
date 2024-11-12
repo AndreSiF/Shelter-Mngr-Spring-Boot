@@ -46,7 +46,7 @@ public class VitimaService {
         return this.repository.findVitimaByUuid(UUID.fromString(uuid));
     }
 
-    public void deletar(String uuid){
+    public void deletarUUID(String uuid){
         this.repository.deleteVitimaByUuid(UUID.fromString(uuid));
     }
 

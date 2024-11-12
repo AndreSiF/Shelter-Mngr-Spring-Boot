@@ -5,6 +5,7 @@ import com.br.csi.gda.model.abrigo.AbrigoRepository;
 import com.br.csi.gda.service.AbrigoService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -29,15 +30,11 @@ public class AbrigoController {
         return this.service.getAbrigo(id);
     }
 
-    @PostMapping("/get-json")
-    public void printJSon(@RequestBody String json){
-        System.out.println(json);
-    }
-
     @PostMapping()
+    @Transactional
     public ResponseEntity salvar(@RequestBody @Valid Abrigo abrigo, UriComponentsBuilder uriBuilder){
         this.service.salvar(abrigo);
-        URI uri = uriBuilder.path("/abrigo/{uuid_abrigo}").buildAndExpand(abrigo.getUuid_abrigo()).toUri();
+        URI uri = uriBuilder.path("/abrigo/{uuid_abrigo}").buildAndExpand(abrigo.getUuid()).toUri();
         return ResponseEntity.created(uri).body(abrigo);
     }
 
@@ -52,9 +49,11 @@ public class AbrigoController {
         return ResponseEntity.ok(abrigo);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity deletar(@PathVariable Integer id){
-        this.service.excluir(id);
+    @DeleteMapping("/{uuid}")
+    @Transactional
+    public ResponseEntity deletarUUID(@PathVariable String uuid){
+        System.out.println(uuid);
+        this.service.deletarUUID(uuid);
         return ResponseEntity.noContent().build();
     }
 }

@@ -1,10 +1,13 @@
 package com.br.csi.gda.model.abrigo;
 
+import com.br.csi.gda.model.usuario.Usuario;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -23,10 +26,11 @@ public class Abrigo {
 
     @UuidGenerator
     @Column(name = "uuid_abrigo")
-    private UUID uuid_abrigo;
+    private UUID uuid;
 
     @NonNull
     @NotBlank
+    @Column(name = "nome_abrigo")
     private String nome;
 
     @NonNull
@@ -34,10 +38,12 @@ public class Abrigo {
     private String endereco;
 
     @NonNull
-    @NotBlank
     private int vagas;
 
     @NonNull
-    @NotBlank
     private int cadastros;
+
+    @OneToMany(mappedBy = "abrigo")
+    @JsonIgnore
+    private List<Usuario> usuarios;
 }

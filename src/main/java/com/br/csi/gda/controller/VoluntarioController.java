@@ -5,6 +5,7 @@ import com.br.csi.gda.model.voluntario.Voluntario;
 import com.br.csi.gda.service.VoluntarioService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -40,6 +41,7 @@ public class VoluntarioController {
     }
 
     @PostMapping()
+    @Transactional
     public ResponseEntity salvar(@RequestBody @Valid Voluntario voluntario, UriComponentsBuilder uriBuilder){
         this.service.salvar(voluntario);
         URI uri = uriBuilder.path("/voluntario/{uuid}").buildAndExpand(voluntario.getUuid()).toUri();
@@ -52,9 +54,16 @@ public class VoluntarioController {
         return ResponseEntity.ok(voluntario);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity deletar(@PathVariable Integer id){
-        this.service.excluir(id);
+//    @DeleteMapping("/{id}")
+//    public ResponseEntity deletar(@PathVariable Integer id){
+//        this.service.excluir(id);
+//        return ResponseEntity.noContent().build();
+//    }
+
+    @DeleteMapping("/{uuid}")
+    @Transactional
+    public ResponseEntity deletarUUID(@PathVariable String uuid){
+        this.service.deletarUUID(uuid);
         return ResponseEntity.noContent().build();
     }
 }

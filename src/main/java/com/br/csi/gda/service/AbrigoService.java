@@ -31,7 +31,7 @@ public class AbrigoService {
     }
 
     public void atualizar(Abrigo abrigo){
-        Abrigo a = this.repository.findAbrigoByUuid_abrigo(abrigo.getUuid_abrigo());
+        Abrigo a = this.repository.findAbrigoByUuid(abrigo.getUuid());
         a.setNome(abrigo.getNome());
         a.setEndereco(abrigo.getEndereco());
         a.setCadastros(abrigo.getCadastros());
@@ -40,10 +40,10 @@ public class AbrigoService {
     }
 
     public Abrigo getAbrigo(String uuid){
-        return this.repository.findAbrigoByUuid_abrigo(UUID.fromString(uuid));
+        return this.repository.findAbrigoByUuid(UUID.fromString(uuid));
     }
 
-    public void deletar(String uuid){
-        this.repository.deleteAbrigoByUuid_abrigo(UUID.fromString(uuid));
+    public void deletarUUID(String uuid){
+        this.repository.deleteAbrigoByUuid(UUID.fromString(uuid));
     }
 }
