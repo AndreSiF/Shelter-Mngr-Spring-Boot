@@ -3,6 +3,11 @@ package com.br.csi.gda.controller;
 import com.br.csi.gda.model.abrigo.Abrigo;
 import com.br.csi.gda.model.abrigo.AbrigoRepository;
 import com.br.csi.gda.service.AbrigoService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +26,10 @@ public class AbrigoController {
     }
 
     @GetMapping("/listar")
+    @Operation(summary = "Listar abrigos", description = "Lista todos os abrigos cadastrados no banco de dados")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Abrigos listados com sucesso", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Abrigo.class)))
+    })
     public List<Abrigo> listar(){
         return this.service.listar();
     }
