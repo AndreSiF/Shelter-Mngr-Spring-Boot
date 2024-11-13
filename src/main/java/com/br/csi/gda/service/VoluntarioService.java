@@ -26,9 +26,9 @@ public class VoluntarioService {
         return this.repository.findById(id).get();
     }
 
-    public void excluir(int id){
-        this.repository.deleteById(id);
-    }
+//    public void excluir(int id){
+//        this.repository.deleteById(id);
+//    }
 
     public void atualizar(Voluntario voluntario){
         Voluntario v = this.repository.findVoluntarioByUuid(voluntario.getUuid());
@@ -37,6 +37,7 @@ public class VoluntarioService {
         v.setEndereco(voluntario.getEndereco());
         v.setIdade(voluntario.getIdade());
         v.setPerm(voluntario.getPerm());
+        v.setAbrigo(voluntario.getAbrigo());
         this.repository.save(v);
     }
 
@@ -44,7 +45,7 @@ public class VoluntarioService {
         return this.repository.findVoluntarioByUuid(UUID.fromString(uuid));
     }
 
-    public void deletar(String uuid){
+    public void deletarUUID(String uuid){
         this.repository.deleteVoluntarioByUuid(UUID.fromString(uuid));
     }
 }

@@ -2,6 +2,7 @@ package com.br.csi.gda.model.voluntario;
 
 import com.br.csi.gda.model.usuario.Usuario;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
@@ -24,5 +25,6 @@ public class Voluntario extends Usuario {
     private UUID uuid_volunt;
 
     @NonNull
+    @NotBlank
     private String endereco;
 }

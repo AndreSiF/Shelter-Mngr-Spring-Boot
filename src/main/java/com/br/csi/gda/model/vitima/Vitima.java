@@ -2,6 +2,7 @@ package com.br.csi.gda.model.vitima;
 
 import com.br.csi.gda.model.usuario.Usuario;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
@@ -19,10 +20,11 @@ public class Vitima extends Usuario {
     @Column(name = "id_vitima")
     private int id;
 
-    @Column(name = "uuid_vitima", nullable = false, updatable = false)
+    @Column(name = "uuid_vitima")
     private UUID uuid_vitima;
 
     @NonNull
+    @NotBlank
     @Column(name = "ultimo_end")
     private String ultimoEnd;
 
