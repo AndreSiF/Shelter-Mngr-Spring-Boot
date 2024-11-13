@@ -26,9 +26,9 @@ public class AbrigoService {
         return this.repository.findById(id).get();
     }
 
-    public void excluir(int id){
-        this.repository.deleteById(id);
-    }
+//    public void excluir(int id){
+//        this.repository.deleteById(id);
+//    }
 
     public void atualizar(Abrigo abrigo){
         Abrigo a = this.repository.findAbrigoByUuid(abrigo.getUuid());

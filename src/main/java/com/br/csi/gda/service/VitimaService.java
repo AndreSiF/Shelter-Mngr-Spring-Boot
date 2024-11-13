@@ -26,9 +26,9 @@ public class VitimaService {
         return this.repository.findById(id).get();
     }
 
-    public void excluir(int id){
-        this.repository.deleteById(id);
-    }
+//    public void excluir(int id){
+//        this.repository.deleteById(id);
+//    }
 
     public void atualizar(Vitima vitima){
         Vitima v = this.repository.findVitimaByUuid(vitima.getUuid());
@@ -39,6 +39,7 @@ public class VitimaService {
         v.setUltimoEnd(vitima.getUltimoEnd());
         v.setIdade(vitima.getIdade());
         v.setPerm(vitima.getPerm());
+        v.setAbrigo(vitima.getAbrigo());
         this.repository.save(v);
     }
 
