@@ -1,5 +1,6 @@
 package com.br.csi.gda.service;
 
+import com.br.csi.gda.model.vitima.Vitima;
 import com.br.csi.gda.model.voluntario.Voluntario;
 import com.br.csi.gda.model.voluntario.VoluntarioRepository;
 import org.springframework.stereotype.Service;
@@ -22,13 +23,17 @@ public class VoluntarioService {
         return this.repository.findAll();
     }
 
-    public Voluntario getVoluntario(int id){
+    public Voluntario getVoluntario(Long id){
         return this.repository.findById(id).get();
     }
 
-//    public void excluir(int id){
-//        this.repository.deleteById(id);
-//    }
+    public List<Voluntario> getVoluntarioByDesastre(String uuid){
+        return this.repository.findVoluntarioByUuid_desastre(UUID.fromString(uuid));
+    }
+
+    public List<Voluntario> getVoluntariosByAbrigo(String uuid){
+        return this.repository.findVoluntarioByAbrigo(UUID.fromString(uuid));
+    }
 
     public void atualizar(Voluntario voluntario){
         Voluntario v = this.repository.findVoluntarioByUuid(voluntario.getUuid());

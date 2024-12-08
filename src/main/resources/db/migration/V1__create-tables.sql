@@ -1,9 +1,17 @@
+CREATE TABLE desastre(id_desastre SERIAL,
+                    uuid_desastre UUID DEFAULT gen_random_uuid(),
+                    nome varchar(100) not null,
+                    data date not null,
+                    descricao varchar(200) not null,
+                    PRIMARY KEY(id_desastre));
+
 CREATE TABLE abrigo (id_abrigo SERIAL,
                     uuid_abrigo UUID DEFAULT gen_random_uuid(),
                     nome_abrigo varchar(100) not null,
                     endereco varchar(100) not null unique,
                     vagas int not null,
                     cadastros int,
+                    id_desastre int not null,
                     PRIMARY KEY(id_abrigo));
 
 CREATE TABLE usuario (id_usuario SERIAL,
@@ -14,6 +22,7 @@ CREATE TABLE usuario (id_usuario SERIAL,
                     idade int not null,
                     perm int not null,
                     id_abrigo int not null,
+                    id_desastre int not null,
                     PRIMARY KEY(id_usuario),
                     FOREIGN KEY(id_abrigo) REFERENCES abrigo(id_abrigo));
 

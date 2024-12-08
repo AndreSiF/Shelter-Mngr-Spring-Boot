@@ -44,7 +44,7 @@ public class VoluntarioController {
             @ApiResponse(responseCode = "404", description = "Voluntário não encontrado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Voluntario.class))),
             @ApiResponse(responseCode = "400", description = "Valor não é um id", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Voluntario.class)))
     })
-    public Voluntario voluntario(@PathVariable Integer id){
+    public Voluntario voluntario(@PathVariable Long id){
         return this.service.getVoluntario(id);
     }
 
@@ -57,6 +57,28 @@ public class VoluntarioController {
     })
     public Voluntario voluntario(@PathVariable String uuid){
         return this.service.getVoluntario(uuid);
+    }
+
+    @GetMapping("/voluntariodesastre/{uuid}")
+    @Operation(summary = "Listar voluntarios baseados no desastre", description = "Lista os voluntários cadastrados baseado no desastre especificado do link")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Voluntários encontrados", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Vitima.class))),
+            @ApiResponse(responseCode = "404", description = "Voluntários não encontrados", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Vitima.class))),
+            @ApiResponse(responseCode = "400", description = "Valor não é um uuid", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Vitima.class)))
+    })
+    public List<Voluntario> voluntariosPorDesastre(@PathVariable String uuid){
+        return this.service.getVoluntarioByDesastre(uuid);
+    }
+
+    @GetMapping("/voluntarioabrigo/{uuid}")
+    @Operation(summary = "Listar voluntários baseado no abrigo", description = "Lista os voluntários cadastrados baseado no abrigo especificado do link")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Voluntários encontrados", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Vitima.class))),
+            @ApiResponse(responseCode = "404", description = "Voluntários não encontrados", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Vitima.class))),
+            @ApiResponse(responseCode = "400", description = "Valor não é um uuid", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Vitima.class)))
+    })
+    public List<Voluntario> voluntariosPorAbrigo(@PathVariable String uuid){
+        return this.service.getVoluntariosByAbrigo(uuid);
     }
 
     @PostMapping()

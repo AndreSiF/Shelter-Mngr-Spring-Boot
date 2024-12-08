@@ -1,6 +1,7 @@
 package com.br.csi.gda.model.usuario;
 
 import com.br.csi.gda.model.abrigo.Abrigo;
+import com.br.csi.gda.model.desastre.Desastre;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
@@ -9,6 +10,7 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -22,7 +24,7 @@ import java.util.UUID;
 public class Usuario {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario")
-    private int id;
+    private Long id;
 
     @UuidGenerator
     @Column(name = "uuid_usuario")
@@ -57,4 +59,13 @@ public class Usuario {
     @JoinColumn(name = "id_abrigo")
     @JsonIgnore
     private Abrigo abrigo;
+
+    @ManyToMany
+    @JsonIgnore
+    @JoinTable(
+            name = "usuario_desastre",
+            joinColumns = @JoinColumn(name = "id_usuario"),
+            inverseJoinColumns = @JoinColumn(name = "id_desastre")
+    )
+    private List<Desastre> desastresU;
 }

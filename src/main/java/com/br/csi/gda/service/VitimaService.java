@@ -22,13 +22,17 @@ public class VitimaService {
         return this.repository.findAll();
     }
 
-    public Vitima getVitima(int id){
+    public Vitima getVitima(Long id){
         return this.repository.findById(id).get();
     }
 
-//    public void excluir(int id){
-//        this.repository.deleteById(id);
-//    }
+    public List<Vitima> getVitimaByDesastre(String uuid){
+        return this.repository.findVitimaByUuid_desastre(UUID.fromString(uuid));
+    }
+
+    public List<Vitima> getVitimasByAbrigo(String uuid){
+        return this.repository.findVitimaByAbrigo(UUID.fromString(uuid));
+    }
 
     public void atualizar(Vitima vitima){
         Vitima v = this.repository.findVitimaByUuid(vitima.getUuid());
@@ -50,16 +54,4 @@ public class VitimaService {
     public void deletarUUID(String uuid){
         this.repository.deleteVitimaByUuid(UUID.fromString(uuid));
     }
-
-    //    public void atualizar(Vitima vitima){
-//        Vitima v = this.repository.getReferenceById(vitima.getId());
-//        v.setNome(vitima.getNome());
-//        v.setCpf(vitima.getCpf());
-//        v.setRiscos(vitima.getRiscos());
-//        v.setPresente(vitima.isPresente());
-//        v.setUltimoEnd(vitima.getUltimoEnd());
-//        v.setIdade(vitima.getIdade());
-//        v.setPermissao(vitima.getPermissao());
-//        this.repository.save(v);
-//    }
 }

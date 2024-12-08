@@ -17,6 +17,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/abrigo")
@@ -43,8 +44,30 @@ public class AbrigoController {
             @ApiResponse(responseCode = "404", description = "Abrigo não encontrado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Abrigo.class))),
             @ApiResponse(responseCode = "400", description = "Valor não é um id", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Abrigo.class)))
     })
-    public Abrigo abrigo(@PathVariable Integer id){
+    public Abrigo abrigo(@PathVariable Long id){
         return this.service.getAbrigo(id);
+    }
+
+    @GetMapping("/abrigousuario/{uuid}")
+    @Operation(summary = "Listar abrigo baseado no usuario", description = "Lista o abrigo cadastrado baseado no usuario especificado do link")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Abrigo encontrado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Abrigo.class))),
+            @ApiResponse(responseCode = "404", description = "Abrigo não encontrado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Abrigo.class))),
+            @ApiResponse(responseCode = "400", description = "Valor não é um uuid", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Abrigo.class)))
+    })
+    public Abrigo abrigoPorUsuario(@PathVariable String uuid){
+        return this.service.getAbrigoByUsuario(uuid);
+    }
+
+    @GetMapping("/abrigodesastre/{uuid}")
+    @Operation(summary = "Listar abrigo baseado no desastre", description = "Lista o abrigo cadastrado baseado no desastre especificado do link")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Abrigo encontrado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Abrigo.class))),
+            @ApiResponse(responseCode = "404", description = "Abrigo não encontrado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Abrigo.class))),
+            @ApiResponse(responseCode = "400", description = "Valor não é um id", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Abrigo.class)))
+    })
+    public List<Abrigo> abrigoPorDesastre(@PathVariable String uuid){
+        return this.service.getAbrigosByDesastre(uuid);
     }
 
     @GetMapping("/uuid/{uuid}")

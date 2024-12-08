@@ -18,7 +18,7 @@ public class Vitima extends Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_vitima")
     @Schema(description = "ID da vítima", example = "1")
-    private int id;
+    private Long id;
 
     @NonNull
     @NotBlank

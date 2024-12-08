@@ -44,8 +44,30 @@ public class VitimaController {
             @ApiResponse(responseCode = "404", description = "Vítima não encontrada", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Vitima.class))),
             @ApiResponse(responseCode = "400", description = "Valor não é um id", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Vitima.class)))
     })
-    public Vitima vitima(@PathVariable Integer id){
+    public Vitima vitima(@PathVariable Long id){
         return this.service.getVitima(id);
+    }
+
+    @GetMapping("/vitimadesastre/{uuid}")
+    @Operation(summary = "Listar vítimas baseado no desastre", description = "Lista vítimas cadastradas baseado no desastre especificado do link")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Vítimas encontradas", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Vitima.class))),
+            @ApiResponse(responseCode = "404", description = "Vítimas não encontradas", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Vitima.class))),
+            @ApiResponse(responseCode = "400", description = "Valor não é um uuid", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Vitima.class)))
+    })
+    public List<Vitima> vitimasPorDesastre(@PathVariable String uuid){
+        return this.service.getVitimaByDesastre(uuid);
+    }
+
+    @GetMapping("/vitimaabrigo/{uuid}")
+    @Operation(summary = "Listar vítimas baseado no abrigo", description = "Lista as vítimas cadastradas baseado no abrigo especificado do link")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Vítimas encontradas", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Vitima.class))),
+            @ApiResponse(responseCode = "404", description = "Vítimas não encontradas", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Vitima.class))),
+            @ApiResponse(responseCode = "400", description = "Valor não é um uuid", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Vitima.class)))
+    })
+    public List<Vitima> vitimasPorAbrigo(@PathVariable String uuid){
+        return this.service.getVitimasByAbrigo(uuid);
     }
 
     @GetMapping("/uuid/{uuid}")

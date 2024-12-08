@@ -1,5 +1,6 @@
 package com.br.csi.gda.model.abrigo;
 
+import com.br.csi.gda.model.desastre.Desastre;
 import com.br.csi.gda.model.usuario.Usuario;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -24,7 +25,7 @@ public class Abrigo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_abrigo")
     @Schema(description = "ID do abrigo", example = "1")
-    private int id;
+    private Long id;
 
     @UuidGenerator
     @Column(name = "uuid_abrigo")
@@ -53,4 +54,13 @@ public class Abrigo {
     @OneToMany(mappedBy = "abrigo")
     @JsonIgnore
     private List<Usuario> usuarios;
+
+    @ManyToMany
+    @JsonIgnore
+    @JoinTable(
+            name = "abrigo_desastre",
+            joinColumns = @JoinColumn(name = "id_abrigo"),
+            inverseJoinColumns = @JoinColumn(name = "id_desastre")
+    )
+    private List<Desastre> desastresA;
 }
