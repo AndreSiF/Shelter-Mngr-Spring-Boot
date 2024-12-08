@@ -33,6 +33,7 @@ public class Desastre {
     @NonNull
     @NotBlank
     @Schema(description = "Nome do desastre", example = "Enchente de 2024")
+    @Column(name = "nome_desastre")
     private String nome;
 
     @NonNull
@@ -42,6 +43,7 @@ public class Desastre {
 
     @NonNull
     @NotBlank
+    @Column(name = "descricao_desastre")
     @Schema(description = "Informações do desastre", example = "Excesso de chuvas causou destruição de moradias em grande escala...")
     private String descricao;
 

@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.UUID;
 
 public interface AbrigoRepository extends JpaRepository <Abrigo, Long> {
-    Abrigo findAbrigoByUuid(UUID uuid);
-    void deleteAbrigoByUuid(UUID uuid);
+    public Abrigo findAbrigoByUuid(UUID uuid);
+    public void deleteAbrigoByUuid(UUID uuid);
 
     @Query(value = "SELECT a.uuid_abrigo AS uuid, a.nome_abrigo AS nome, a.endereco AS endereco, a.vagas AS vagas, a.cadastros AS cadastros FROM desastre d, abrigo a, abrigo_desastre ad WHERE ad.id_abrigo = a.id_abrigo AND ad.id_desastre = d.id_desastre AND ad.uuid_abrigo = :id", nativeQuery = true)
     List<Abrigo> findAbrigosByDesastre(@Param("id") UUID id);

@@ -41,7 +41,6 @@ public class VoluntarioService {
         v.setCpf(voluntario.getCpf());
         v.setEndereco(voluntario.getEndereco());
         v.setIdade(voluntario.getIdade());
-        v.setPerm(voluntario.getPerm());
         v.setAbrigo(voluntario.getAbrigo());
         this.repository.save(v);
     }

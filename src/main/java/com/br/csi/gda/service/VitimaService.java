@@ -27,11 +27,11 @@ public class VitimaService {
     }
 
     public List<Vitima> getVitimaByDesastre(String uuid){
-        return this.repository.findVitimaByUuid_desastre(UUID.fromString(uuid));
+        return this.repository.findVitimasByUuid_desastre(UUID.fromString(uuid));
     }
 
     public List<Vitima> getVitimasByAbrigo(String uuid){
-        return this.repository.findVitimaByAbrigo(UUID.fromString(uuid));
+        return this.repository.findVitimasByAbrigo(UUID.fromString(uuid));
     }
 
     public void atualizar(Vitima vitima){
@@ -42,7 +42,6 @@ public class VitimaService {
         v.setPresente(vitima.isPresente());
         v.setUltimoEnd(vitima.getUltimoEnd());
         v.setIdade(vitima.getIdade());
-        v.setPerm(vitima.getPerm());
         v.setAbrigo(vitima.getAbrigo());
         this.repository.save(v);
     }

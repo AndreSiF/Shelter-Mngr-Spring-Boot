@@ -57,10 +57,7 @@ public class Abrigo {
 
     @ManyToMany
     @JsonIgnore
-    @JoinTable(
-            name = "abrigo_desastre",
-            joinColumns = @JoinColumn(name = "id_abrigo"),
-            inverseJoinColumns = @JoinColumn(name = "id_desastre")
+    @JoinTable(name = "abrigo_desastre", joinColumns = @JoinColumn(name = "id_abrigo"), inverseJoinColumns = @JoinColumn(name = "id_desastre")
     )
     private List<Desastre> desastresA;
 }

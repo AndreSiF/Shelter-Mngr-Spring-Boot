@@ -51,21 +51,12 @@ public class Usuario {
     @Schema(description = "Idade do usuário", example = "24")
     private int idade;
 
-    @NonNull
-    @Schema(description = "Nível de permissão do usuário", example = "2")
-    private int perm;
-
     @ManyToOne
     @JoinColumn(name = "id_abrigo")
-    @JsonIgnore
     private Abrigo abrigo;
 
     @ManyToMany
     @JsonIgnore
-    @JoinTable(
-            name = "usuario_desastre",
-            joinColumns = @JoinColumn(name = "id_usuario"),
-            inverseJoinColumns = @JoinColumn(name = "id_desastre")
-    )
+    @JoinTable(name = "usuario_desastre", joinColumns = @JoinColumn(name = "id_usuario"), inverseJoinColumns = @JoinColumn(name = "id_desastre"))
     private List<Desastre> desastresU;
 }
