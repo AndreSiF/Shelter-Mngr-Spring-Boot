@@ -86,7 +86,9 @@ public class AbrigoController {
     @Operation(summary = "Cadastrar abrigo", description = "Cadastra um abrigo no banco")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Abrigo cadastrado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Abrigo.class))),
+            @ApiResponse(responseCode = "403", description = "Permissões insuficientes", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Abrigo.class))),
             @ApiResponse(responseCode = "404", description = "Valores inválidos, abrigo não cadastrado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Abrigo.class)))
+
     })
     public ResponseEntity salvar(@RequestBody @Valid Abrigo abrigo, UriComponentsBuilder uriBuilder){
         this.service.salvar(abrigo);
@@ -97,7 +99,8 @@ public class AbrigoController {
     @PutMapping
     @Operation(summary = "Atualizar abrigo", description = "Atualiza informações do abrigo")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Abrigo atualizado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Abrigo.class)))
+            @ApiResponse(responseCode = "200", description = "Abrigo atualizado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Abrigo.class))),
+            @ApiResponse(responseCode = "403", description = "Permissões insuficientes", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Abrigo.class))),
     })
     public ResponseEntity atualizar(@RequestBody @Valid Abrigo abrigo){
         this.service.atualizar(abrigo);
@@ -109,6 +112,7 @@ public class AbrigoController {
     @Operation(summary = "Deletar abrigo", description = "Deleta o abrigo pelo UUID especificado no link")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "204", description = "Abrigo deletado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Abrigo.class))),
+            @ApiResponse(responseCode = "403", description = "Permissões insuficientes", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Abrigo.class))),
     })
     public ResponseEntity deletarUUID(@PathVariable String uuid){
         this.service.deletarUUID(uuid);

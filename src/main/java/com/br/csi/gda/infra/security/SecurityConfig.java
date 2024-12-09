@@ -40,8 +40,8 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.DELETE, "/abrigo").hasAuthority("ROLE_ADMIN")
                                 //permissões para vítimas
                                 .requestMatchers(HttpMethod.GET, "/vitima/**").permitAll()
-                                .requestMatchers(HttpMethod.GET, "/vitima/vitimaabrigo/{uuid}").permitAll()
-                                .requestMatchers(HttpMethod.GET, "/vitima/vitimadesastre/{uuid}").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/vitima/vitimaabrigo").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/vitima/vitimadesastre").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/vitima").hasAnyAuthority("ROLE_ADMIN", "ROLE_VOLUNT")
                                 .requestMatchers(HttpMethod.DELETE, "/vitima").hasAnyAuthority("ROLE_ADMIN", "ROLE_VOLUNT")
                                 //permissões para voluntários
