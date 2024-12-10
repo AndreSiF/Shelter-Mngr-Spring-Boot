@@ -22,13 +22,9 @@ public class AbrigoService {
         return this.repository.findAll();
     }
 
-    public Abrigo getAbrigo(int id){
+    public Abrigo getAbrigo(Long id){
         return this.repository.findById(id).get();
     }
-
-//    public void excluir(int id){
-//        this.repository.deleteById(id);
-//    }
 
     public void atualizar(Abrigo abrigo){
         Abrigo a = this.repository.findAbrigoByUuid(abrigo.getUuid());
@@ -37,6 +33,14 @@ public class AbrigoService {
         a.setCadastros(abrigo.getCadastros());
         a.setVagas(abrigo.getVagas());
         this.repository.save(a);
+    }
+
+    public Abrigo getAbrigoByUsuario(String uuid){
+        return this.repository.findAbrigoByUsuario(UUID.fromString(uuid));
+    }
+
+    public List<Abrigo> getAbrigosByDesastre(String uuid){
+        return this.repository.findAbrigosByDesastre(UUID.fromString(uuid));
     }
 
     public Abrigo getAbrigo(String uuid){

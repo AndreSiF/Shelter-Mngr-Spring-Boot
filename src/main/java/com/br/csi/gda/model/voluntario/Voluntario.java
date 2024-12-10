@@ -1,12 +1,11 @@
 package com.br.csi.gda.model.voluntario;
 
 import com.br.csi.gda.model.usuario.Usuario;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-import org.hibernate.annotations.UuidGenerator;
 
-import java.util.UUID;
 
 @Entity
 @Table(name = "voluntario")
@@ -18,13 +17,12 @@ public class Voluntario extends Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_volunt")
-    private int id;
-
-    @UuidGenerator
-    @Column(name = "uuid_volunt")
-    private UUID uuid_volunt;
+    @Schema(description = "ID do voluntário", example = "1")
+    private Long id;
 
     @NonNull
     @NotBlank
+    @Column(name = "endereco_volunt")
+    @Schema(description = "Endereço em que o voluntário mora", example = "Rua José Barin, 2354")
     private String endereco;
 }
