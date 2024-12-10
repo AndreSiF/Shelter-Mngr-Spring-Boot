@@ -9,7 +9,4 @@ import java.util.UUID;
 public interface DesastreRepository extends JpaRepository<Desastre, Long> {
     public Desastre findDesastreByUuid(UUID uuid_desastre);
     public void deleteDesastreByUuid(UUID uuid_desastre);
-
-    @Query(value = "SELECT DISTINCT d.uuid_desastre, d.nome, d.data, d.descricao FROM desastre d, usuario u WHERE u.id_desastre = d.id_desastre AND u.uuid_usuario = :id", nativeQuery = true)
-    Desastre findDesastreByUuid_usuario(@Param("id") UUID id);
 }

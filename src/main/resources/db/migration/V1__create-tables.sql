@@ -33,6 +33,6 @@ CREATE TABLE vitima (id_vitima SERIAL,
 
 CREATE TABLE voluntario(id_volunt SERIAL,
                     id_usuario int not null,
-                    endereco varchar(100) not null,
+                    endereco_volunt varchar(100) not null,
                     PRIMARY KEY(id_volunt),
                     FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario));

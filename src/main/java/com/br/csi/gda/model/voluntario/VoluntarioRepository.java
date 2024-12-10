@@ -12,9 +12,9 @@ public interface VoluntarioRepository extends JpaRepository<Voluntario, Long> {
     public Voluntario findVoluntarioByUuid(UUID uuid);
     public void deleteVoluntarioByUuid(UUID uuid);
 
-    @Query(value = "SELECT DISTINCT u.uuid_usuario, u.nome, u.cpf, u.data_cad, u.idade, u.id_abrigo, v.endereco FROM usuario u, voluntario v, desastre d WHERE v.id_usuario = u.id_usuario AND u.id_desastre = d.id_desastre AND d.uuid_desastre = :id", nativeQuery = true)
+    @Query(value = "SELECT * FROM usuario, voluntario, desastre, usuario_desastre WHERE voluntario.id_usuario = usuario.id_usuario AND usuario_desastre.id_desastre = desastre.id_desastre AND usuario_desastre.id_usuario = usuario.id_usuario AND desastre.uuid_desastre = :id", nativeQuery = true)
     List<Voluntario> findVoluntarioByUuid_desastre(@Param("id") UUID id);
 
-    @Query(value = "SELECT u.uuid_usuario, u.nome, u.cpf, u.data_cad, u.idade, u.id_abrigo, v.endereco FROM usuario u, voluntario v, abrigo a WHERE v.id_usuario = u.id_usuario AND a.id_abrigo = u.id_abrigo AND a.uuid_abrigo = :id", nativeQuery = true)
+    @Query(value = "SELECT usuario.id_usuario, usuario.uuid_usuario, usuario.nome, usuario.cpf, usuario.idade, usuario.data_cad, voluntario.endereco_volunt, abrigo.id_abrigo, abrigo.uuid_abrigo, abrigo.nome_abrigo, abrigo.endereco FROM usuario, voluntario, abrigo WHERE voluntario.id_usuario = usuario.id_usuario AND abrigo.id_abrigo = usuario.id_abrigo AND abrigo.uuid_abrigo = :id", nativeQuery = true)
     List<Voluntario> findVoluntarioByAbrigo(@Param("id") UUID id);
 }

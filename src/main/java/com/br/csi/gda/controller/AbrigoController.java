@@ -48,8 +48,8 @@ public class AbrigoController {
         return this.service.getAbrigo(id);
     }
 
-    @GetMapping("/abrigousuario/{uuid}")
-    @Operation(summary = "Listar abrigo baseado no usuario", description = "Lista o abrigo cadastrado baseado no usuario especificado do link")
+    @GetMapping("/pessoa/{uuid}")
+    @Operation(summary = "Listar abrigo baseado no usuario", description = "Lista o abrigo cadastrado baseado na pessoa especificada do link")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Abrigo encontrado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Abrigo.class))),
             @ApiResponse(responseCode = "404", description = "Abrigo não encontrado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Abrigo.class))),
@@ -59,7 +59,7 @@ public class AbrigoController {
         return this.service.getAbrigoByUsuario(uuid);
     }
 
-    @GetMapping("/abrigodesastre/{uuid}")
+    @GetMapping("/desastre/{uuid}")
     @Operation(summary = "Listar abrigo baseado no desastre", description = "Lista o abrigo cadastrado baseado no desastre especificado do link")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Abrigo encontrado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Abrigo.class))),

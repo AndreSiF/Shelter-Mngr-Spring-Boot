@@ -48,7 +48,7 @@ public class VitimaController {
         return this.service.getVitima(id);
     }
 
-    @GetMapping("/vitimadesastre/{uuid}")
+    @GetMapping("/desastre/{uuid}")
     @Operation(summary = "Listar vítimas baseado no desastre", description = "Lista vítimas cadastradas baseado no desastre especificado do link")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Vítimas encontradas", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Vitima.class))),
@@ -59,7 +59,7 @@ public class VitimaController {
         return this.service.getVitimaByDesastre(uuid);
     }
 
-    @GetMapping("/vitimaabrigo/{uuid}")
+    @GetMapping("/abrigo/{uuid}")
     @Operation(summary = "Listar vítimas baseado no abrigo", description = "Lista as vítimas cadastradas baseado no abrigo especificado do link")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Vítimas encontradas", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Vitima.class))),

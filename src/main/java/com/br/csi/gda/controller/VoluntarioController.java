@@ -59,7 +59,7 @@ public class VoluntarioController {
         return this.service.getVoluntario(uuid);
     }
 
-    @GetMapping("/voluntariodesastre/{uuid}")
+    @GetMapping("/desastre/{uuid}")
     @Operation(summary = "Listar voluntarios baseados no desastre", description = "Lista os voluntários cadastrados baseado no desastre especificado do link")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Voluntários encontrados", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Vitima.class))),
@@ -70,7 +70,7 @@ public class VoluntarioController {
         return this.service.getVoluntarioByDesastre(uuid);
     }
 
-    @GetMapping("/voluntarioabrigo/{uuid}")
+    @GetMapping("/abrigo/{uuid}")
     @Operation(summary = "Listar voluntários baseado no abrigo", description = "Lista os voluntários cadastrados baseado no abrigo especificado do link")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Voluntários encontrados", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Vitima.class))),

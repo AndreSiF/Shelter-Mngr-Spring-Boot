@@ -26,5 +26,6 @@ public class Login {
     private String senha;
 
     @Schema(description = "Permissão do usuário", example = "ROLE_VITIMA")
+    @NotNull
     private String permissao;
 }

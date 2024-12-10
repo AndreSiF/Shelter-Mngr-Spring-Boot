@@ -27,8 +27,10 @@ public class SecurityConfig {
                         auth.requestMatchers(HttpMethod.POST, "/login").permitAll()
                                 //permissões para usuários
                                 .requestMatchers(HttpMethod.GET, "/usuario").permitAll()
+
                                 //.requestMatchers(HttpMethod.POST, "/usuario").hasAuthority("ROLE_ADMIN")
                                 //permissão liberada para criar o primeiro usuário admin
+
                                 .requestMatchers(HttpMethod.POST, "/usuario").permitAll()
                                 //permissões para desastres
                                 .requestMatchers(HttpMethod.GET, "/desastre/**").permitAll()
@@ -36,16 +38,20 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.DELETE, "/desastre").hasAuthority("ROLE_ADMIN")
                                 //permissões para abrigos
                                 .requestMatchers(HttpMethod.GET, "/abrigo/**").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/abrigo/pessoa").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/abrigo/desastre").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/abrigo").hasAuthority("ROLE_ADMIN")
                                 .requestMatchers(HttpMethod.DELETE, "/abrigo").hasAuthority("ROLE_ADMIN")
                                 //permissões para vítimas
                                 .requestMatchers(HttpMethod.GET, "/vitima/**").permitAll()
-                                .requestMatchers(HttpMethod.GET, "/vitima/vitimaabrigo").permitAll()
-                                .requestMatchers(HttpMethod.GET, "/vitima/vitimadesastre").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/vitima/abrigo").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/vitima/desastre").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/vitima").hasAnyAuthority("ROLE_ADMIN", "ROLE_VOLUNT")
                                 .requestMatchers(HttpMethod.DELETE, "/vitima").hasAnyAuthority("ROLE_ADMIN", "ROLE_VOLUNT")
                                 //permissões para voluntários
                                 .requestMatchers(HttpMethod.GET, "/voluntario/**").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/voluntario/abrigo").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/voluntario/desastre").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/voluntario").hasAnyAuthority("ROLE_ADMIN", "ROLE_VOLUNT")
                                 .requestMatchers(HttpMethod.DELETE, "/voluntario").hasAuthority("ROLE_ADMIN")
                                 .anyRequest().authenticated()).addFilterBefore(this.filter, UsernamePasswordAuthenticationFilter.class).build();

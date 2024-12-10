@@ -1,6 +1,12 @@
 package com.br.csi.gda.controller;
 
 import com.br.csi.gda.infra.security.TokenServiceJWT;
+import com.br.csi.gda.model.abrigo.Abrigo;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +30,12 @@ public class AutenticacaoController {
     }
 
     @PostMapping
+    @Operation(summary = "Autenticar-se no sistema", description = "Usuário autentica-se no sistema para adquirir permissões")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Login e senha corretos", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Abrigo.class))),
+            @ApiResponse(responseCode = "400", description = "Login ou senha incorretos", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Abrigo.class))),
+
+    })
     public ResponseEntity fazerLogin(@RequestBody @Valid DadosAutenticacao dados){
         try{
             Authentication autenticado = new UsernamePasswordAuthenticationToken(dados.login(), dados.senha());

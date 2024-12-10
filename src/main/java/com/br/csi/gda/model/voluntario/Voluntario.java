@@ -22,6 +22,7 @@ public class Voluntario extends Usuario {
 
     @NonNull
     @NotBlank
+    @Column(name = "endereco_volunt")
     @Schema(description = "Endereço em que o voluntário mora", example = "Rua José Barin, 2354")
     private String endereco;
 }
